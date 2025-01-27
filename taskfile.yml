@@ -1,0 +1,36 @@
+version: "3"
+
+tasks:
+  setup:
+    cmds:
+      - templ generate
+      - go mod tidy
+      - bun install
+      - bun tailwindcss -i ./styles.css -o ./public/styles.css --minify
+      - bun build ./scripts.js --outfile=./public/scripts.js --minify
+
+  deploy:
+    deps: [setup]
+    cmds:
+      - sam build
+      - sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
+
+  dev:
+    deps: [tailwind, templ, go, javascript]
+
+  go:
+    deps: [setup]
+    cmds:
+      - air --build.cmd "go build -o tmp/bin/main" --build.bin "tmp/bin/main" --build.delay "100" --build.exclude_dir "node_modules" --build.include_ext "go" --build.stop_on_error "false" --misc.clean_on_exit true
+
+  templ:
+    cmds:
+      - templ generate --proxy="http://localhost:3000" --lazy --watch
+
+  tailwind:
+    cmds:
+      - bun tailwindcss -i ./styles.css -o ./public/styles.css --minify --watch
+
+  javascript:
+    cmds:
+      - bun build ./scripts.js --outfile=./public/scripts.js --minify --watch

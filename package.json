@@ -1,0 +1,11 @@
+{
+  "name": "gatth",
+  "module": "scripts.js",
+  "type": "module",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "alpinejs": "^3.14.8",
+    "htmx.org": "2.0.4",
+    "tailwindcss": "^4.0.0"
+  }
+}

@@ -1,0 +1,9 @@
+tmp/
+*_templ.*
+.aws-sam
+node_modules/
+
+public/styles.css
+public/scripts.js
+
+bin
