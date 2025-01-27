@@ -28,6 +28,7 @@ func Docs(w http.ResponseWriter, r *http.Request) {
     <html>
       <head>
         <title>API Reference</title>
+			  <link rel="icon" href="public/favicon.ico"/>
         <meta charset="utf-8" />
         <meta
           name="viewport"
