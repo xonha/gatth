@@ -1,73 +1,33 @@
 package app
 
 templ Page() {
-	<html lang="en">
-		<head>
-			<meta charset="UTF-8"/>
-			<link rel="icon" href="public/favicon.ico"/>
-			<link rel="stylesheet" href="public/styles.css"/>
-			<script defer src="./public/scripts.js"></script>
-			<title>Todo</title>
-		</head>
-		<body>
-			@Main()
-		</body>
-	</html>
-}
-
-templ Main() {
-	<main
-		x-data="{isModalOpen: false}"
-		class="flex flex-col h-dvh w-dvw items-center px-6"
-	>
-		<div
-			id="mainModal"
-			x-show="isModalOpen"
-			class="fixed inset-0 z-30 flex items-end justify-center bg-black/20 p-4 pb-8 backdrop-blur-md sm:items-center lg:p-8"
-		>
-			<button
-				@click={ "isModalOpen=!isModalOpen" }
-				class="whitespace-nowrap rounded-sm bg-sky-500 px-4 py-2 text-center text-sm font-medium tracking-wide text-white transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 active:opacity-100 active:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-75"
-			>Close Modal</button>
-		</div>
-		<form
-			class="flex flex-col border rounded-md m-6 p-6 gap-6 h-fit w-full max-w-[1368px]"
-			hx-post="/todo"
-		>
-			<h1 class="font-bold text-2xl">Add New Todo</h1>
-			<div data-name="TodoInput" class="flex flex-col">
-				<label for="cpf" class="font-semibold text-sm">CPF</label>
-				<input
-					class="border rounded-md p-2 text-sm"
-					required
-					x-data
-					name="cpf"
-					placeholder="Enter CPF"
-					x-mask="999.999.999-99"
-				/>
+	<main class="h-dvh">
+		<section class="flex items-center bg-blue-600 text-white py-20 h-[40%]">
+			<div class="container mx-auto px-6 text-center">
+				<h1 class="text-4xl font-bold mb-4">Welcome to GOTTH Stack</h1>
+				<p class="text-xl mb-8">A powerful combination of Go, templ, Tailwind, and HTMX</p>
 			</div>
-			<label for="name" class="font-semibold text-sm">Name</label>
-			<input
-				class="border rounded-md p-2 text-sm"
-				x-data
-				x-on:input="event.target.value = event.target.value.replace(/[^a-zA-Z ]/g, '')"
-				name="name"
-				placeholder="Enter name"
-			/>
-			<label for="description" class="font-semibold text-sm">Task Description</label>
-			<input
-				class="border rounded-md p-2 text-sm"
-				name="description"
-				placeholder="Enter task description"
-			/>
-			<button
-				class="bg-black text-white rounded-md p-3 text-sm font-bold w-24"
-				type="submit"
-			>Add Todo</button>
-		</form>
-		<div data-name="todoList" class="flex flex-col border rounded-md m-6 p-6 gap-6 h-fit w-full max-w-[1368px]">
-			<h1 class="font-bold text-2xl" id="todoListTitle">Todo List</h1>
-			<span>No todos yet. Add one above!</span>
-		</div>
+		</section>
+		<section class="flex flex-col justify-center h-[60%] mx-auto px-6">
+			<h2 class="text-3xl font-bold text-center mb-8">Features</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+				<div class="bg-white rounded-lg shadow-md p-6">
+					<h3 class="text-xl font-semibold mb-2">Go</h3>
+					<p class="text-gray-600">Fast and efficient backend development</p>
+				</div>
+				<div class="bg-white rounded-lg shadow-md p-6">
+					<h3 class="text-xl font-semibold mb-2">templ</h3>
+					<p class="text-gray-600">Type-safe HTML templating for Go</p>
+				</div>
+				<div class="bg-white rounded-lg shadow-md p-6">
+					<h3 class="text-xl font-semibold mb-2">Tailwind</h3>
+					<p class="text-gray-600">Utility-first CSS framework</p>
+				</div>
+				<div class="bg-white rounded-lg shadow-md p-6">
+					<h3 class="text-xl font-semibold mb-2">HTMX</h3>
+					<p class="text-gray-600">High-power tools for HTML</p>
+				</div>
+			</div>
+		</section>
 	</main>
 }

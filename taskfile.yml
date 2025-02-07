@@ -25,7 +25,7 @@ tasks:
 
   templ:
     cmds:
-      - templ generate --proxy="http://localhost:3000" --lazy --watch
+      - templ generate --proxy="http://localhost:3000" --open-browser=false --lazy --watch
 
   tailwind:
     cmds:

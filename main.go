@@ -32,7 +32,7 @@ func main() {
 	router.Handle("/public/*", http.StripPrefix("/public/", http.FileServer(http.FS(assets))))
 
 	router.Get("/docs", api.Docs)
-	router.Get("/", templ.Handler(app.Page()).ServeHTTP)
+	router.Get("/", templ.Handler(app.Index()).ServeHTTP)
 
 	huma.Get(humaApi, "/hello/{name}", api.Hello)
 
